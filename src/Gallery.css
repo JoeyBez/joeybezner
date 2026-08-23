@@ -1,0 +1,22 @@
+.listing{
+    text-align: center;
+    /* border: 1px solid red; */
+    transition: 0.2s;
+}
+
+.listing:hover{
+    scale: 1.03;
+}
+
+.listing-image{
+    width: 90%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.container{
+    justify-items: center;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
