@@ -1,0 +1,9 @@
+:root{
+    --accent-color: rgb(120, 120, 120);
+    --accent-highlight: rgb(170, 170, 170);
+}
+
+html, body{
+/* border: 1px solid red; */
+overflow-x: hidden;
+}

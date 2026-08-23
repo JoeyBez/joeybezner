@@ -1,0 +1,77 @@
+.d-container{
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1.5fr 1fr;
+    height: 40vw;
+    overflow-wrap: anywhere;
+}
+
+img{
+    height: inherit;
+    margin-left: 50%;
+    translate: -50%;
+}
+.d-images{
+    /* display: contents; */
+    justify-content: center;
+    height: inherit;
+    position: relative;
+    /* background-color: var(--accent-highlight); */
+}
+
+.d-info{
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+}
+
+.d-title{
+    font-size: 2rem;
+}
+.d-year{
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+    color: var(--accent-color);
+}
+
+.d-button{
+    position: absolute;
+    width: 30px;
+    height: 30px; 
+    top: 50%;
+    border: none;
+    border-radius: 100px;
+    z-index: 1;
+    color: white;
+    background-color: var(--accent-highlight);
+    text-align: center;
+    padding: 0.5rem;
+    transition: 0.2s;
+    opacity: 50%;
+}
+.d-button:hover{
+    background-color: var(--accent-color);
+    scale: 1.05;
+}
+.d-button.left{
+    left:5%;
+}
+.d-button.right{
+    right:5%;
+    transform: scaleX(-1);
+}
+.d-dots{
+    position: absolute;
+    z-index: 1;
+    /* border: 1px solid red; */
+    width: 100%;
+    bottom: 1rem;
+    text-align: center;
+}
+.d-dot{
+    color: var(--accent-highlight);
+}
+.d-dot.selected{
+    color: var(--accent-color);
+}
