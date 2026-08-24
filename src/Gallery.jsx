@@ -13,6 +13,7 @@ export default function Gallery(params){
     const [listings, setListings] = useState([]);
 
     const [filters, setFilters] = useState({cleared:true});
+    const [asc, setAsc] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
 
     // get listings from supabase table
@@ -35,7 +36,7 @@ export default function Gallery(params){
         }
 
         const { data, error } = await query
-            .order("year", { ascending: false });
+            .order("year", { ascending: asc });
         
         if(error){
             console.error(error);
@@ -49,7 +50,7 @@ export default function Gallery(params){
     useEffect(() => {
         // console.log(filters)
         getListings();
-    }, [category, filters]);
+    }, [category, filters, asc]);
 
     // get mediums from database enum
     const [mediums, setMediums] = useState([]);
@@ -72,7 +73,7 @@ export default function Gallery(params){
     return (
         <div>
             <CategoryHeader category={category}/>
-            <Filter filters={filters} setFilters={setFilters} mediums={mediums} />
+            <Filter filters={filters} setFilters={setFilters} mediums={mediums} asc={{value: asc, set: setAsc}} />
             {loading ? 
             <Loading />
             : 
@@ -81,11 +82,6 @@ export default function Gallery(params){
                 {listings.map((listing, key) => (
                     <div className="listing" key={listing.id} onClick={() => setSearchParams({"listing": listing.id})}>
                         <img src={listing.img[0]} alt="Artwork Image" className="listing-image" />
-                        {/* <br /> */}
-                        {/* <small>{listing.title}</small> */}
-                        {/* <small>{listing.category} - {listing.medium}</small>
-                        <br />
-                        <small>{listing.year}</small> */}
                     </div>
                 ))}
             </div>)

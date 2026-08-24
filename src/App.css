@@ -79,6 +79,23 @@ nav{
   display: none;
 }
 
+footer{
+  height: 50px;
+  border-top: 1px solid var(--accent-color);
+  padding: 1rem;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  justify-items: center;
+}
+
+footer > div{
+  display: flex;
+  /* flex-direction: column; */
+  gap: 1rem;
+}
+
 @media screen and (min-width: 768px) {
   nav{
     gap: 3rem;

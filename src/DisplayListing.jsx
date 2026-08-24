@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import Loading from "./Loading";
 import { supabase } from "./lib/supabaseClient";
 import './DisplayListing.css'
-import { IoChevronBack } from "react-icons/io5";
+import { IoChevronBack, IoLogoInstagram } from "react-icons/io5";
+import { FaSpotify } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 
 export default function DisplayListing(params){
+    const navigate = useNavigate();
     const {id} = params;
     const [loading, setLoading] = useState(false);
     const [listing, setListing] = useState({});
@@ -32,6 +35,10 @@ export default function DisplayListing(params){
         getListing();
     }, []);
 
+    const formatCategory = (c) => {
+        return c.replace(' ', '_');
+    }
+
     return (
         <div>
             {
@@ -52,8 +59,24 @@ export default function DisplayListing(params){
                         <img src={listing.img ? listing.img[image] : listing.img} alt="" />
                     </div>
                     <div className="d-info">
+                        <small className="d-category" onClick={() => navigate(`/${formatCategory(listing.category)}`)}>{listing.category}</small>
                         <small className="d-title">{listing.title}</small>
                         <small className="d-year">{listing.medium}, {listing.year}</small>
+                        <small>{listing.description || "No description provided."}</small>
+                        <div style={{marginTop:"1rem"}}>
+                            {listing.instagram && 
+                                <div className="social listing-link" onClick={() => {window.open(listing.instagram, '_blank', 'noopener,noreferrer');}}>
+                                    <IoLogoInstagram />
+                                    <small>View on Instagram</small>
+                                </div>
+                            }
+                            {listing.spotify && 
+                                <div className="social listing-link" onClick={() => {window.open(listing.spotify, '_blank', 'noopener,noreferrer');}}>
+                                    <FaSpotify />
+                                    <small>View on Spotify</small>
+                                </div>
+                            }
+                        </div>
                     </div>
                 </div>
             }

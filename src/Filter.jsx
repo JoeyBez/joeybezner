@@ -3,7 +3,7 @@ import './Filter.css'
 import { useEffect, useState } from "react";
 
 export default function Filter(params){
-    const {filters, setFilters, mediums} = params;
+    const {filters, setFilters, mediums, asc} = params;
     const [displayFilters, setDisplayFilters] = useState(false);
     const [filterCount, setFilterCount] = useState(0);
 
@@ -12,19 +12,19 @@ export default function Filter(params){
     }, [filters])
 
     return(
-        <div style={{marginBottom:"2rem", display:"flex"}}>
+        <div style={{marginBottom:"2rem", display:"flex", borderTop:"1px solid var(--accent-color)", borderBottom:"1px solid var(--accent-color)"}}>
             <div style={{display:"flex", gap:"0.5rem", alignItems:"center"}}>
                 <div className="filter-bar" onClick={() => setDisplayFilters(!displayFilters)}>
                     <IoOptions />
                     <small>Filter</small>
                     {filterCount > 0 && <small className="filter-bar-number">{filterCount}</small>}
                 </div>
-                {!filters.cleared && <small className="clear" onClick={() => {setFilters({cleared:true}); setDisplayFilters(false)}}>Clear</small>}
+                {!filters.cleared && <small className="clear" onClick={() => {setFilters({cleared:true, ascending:false}); setDisplayFilters(false)}}>Clear</small>}
             </div>
             <div className={`more-filters ${displayFilters ? "in" : "out"}`} style={{display:"flex", gap:"1rem", padding:"1rem"}}>
                 |
                 <div className="filter-option">
-                    <label><IoSwapVertical /> Descending</label>
+                    <label onClick={() => {asc.set(!asc.value)}}><IoSwapVertical /> {asc.value ? "Ascending" : "Descending"}</label>
                 </div>
                 |
                 {mediums.map((medium, key) => (

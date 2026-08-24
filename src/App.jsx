@@ -12,7 +12,7 @@ function App() {
   const [displayListing, setDisplayListing] = useState();
 
   const [categories, setCategories] = useState([]);
-  const [openMenu, setOpenMenu] = useState(true);
+  const [openMenu, setOpenMenu] = useState(false);
 
   const getCategories = async () => {
     const { data, error } = await supabase
@@ -77,6 +77,14 @@ function App() {
           ))
         }
       </Routes>
+      <footer>
+        <small>Joey Bezner</small>
+        <div>
+          <IoLogoInstagram className="social" onClick={() => {window.open('https://www.instagram.com/joeybezner/?hl=en', '_blank', 'noopener,noreferrer');}} />
+          <IoLogoLinkedin className="social" onClick={() => {window.open('https://www.linkedin.com/in/joeybezner/', '_blank', 'noopener,noreferrer');}} />
+          <IoLogoTiktok className="social" onClick={() => {window.open('https://www.tiktok.com/@joeysart', '_blank', 'noopener,noreferrer');}} />
+        </div>
+      </footer>
     </div>    
   )
 }
