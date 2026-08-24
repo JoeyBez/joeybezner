@@ -1,0 +1,33 @@
+.home{
+    display: grid;
+    justify-items: center;
+    gap: 3rem;
+}
+.home > div{
+    /* border: 1px solid red; */
+    /* width: 100%; */
+}
+
+.home-info{
+    text-align: center;
+}
+.home-info > p{
+    color: var(--accent-color);
+}
+
+.featured{
+    display: flex;
+    gap: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+    .home{
+        grid-template-columns: 1fr 1fr;
+        height: 30vw;
+        align-items: center;
+    }
+    .home-info{
+        text-align: left;
+        width: fit-content;
+    }
+}

@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Link, useSearchParams, useNavigate } from
 import { supabase } from './lib/supabaseClient';
 import DisplayListing from './DisplayListing';
 import { IoLogoInstagram, IoLogoLinkedin, IoLogoTiktok, IoMenu } from 'react-icons/io5';
+import Home from './Home';
 
 function App() {
   const navigate = useNavigate();
@@ -70,7 +71,7 @@ function App() {
       </div>
       <br />
       <Routes>
-        <Route path='/' element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category={null} />} />
+        <Route path='/' element={displayListing ? <DisplayListing id={displayListing} /> : <div><Home /><Gallery category={null} /></div>} />
         {
           categories.map((category, key) => (
               <Route path={`/${formatCategory(category)}`} element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category={category} />} key={key} />
