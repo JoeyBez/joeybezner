@@ -3,7 +3,7 @@ import Loading from "./Loading";
 import { supabase } from "./lib/supabaseClient";
 import './DisplayListing.css'
 import { IoChevronBack, IoLogoInstagram } from "react-icons/io5";
-import { FaSpotify } from "react-icons/fa";
+import { IoIosLink } from "react-icons/io";
 import { GoDotFill } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 
@@ -65,6 +65,12 @@ export default function DisplayListing(params){
                         <small className="d-year">{listing.medium}, {listing.year}</small>
                         <small>{listing.description || ""}</small>
                         <div style={{marginTop:"1rem"}}>
+                            {listing.external_link &&
+                                <div className="social listing-link" onClick={() => {window.open(listing.external_link.link, '_blank', 'noopener,noreferrer');}}>
+                                    <IoIosLink />
+                                    <small>View on {listing.external_link.site}</small>
+                                </div>
+                            }
                             {listing.instagram && 
                                 <div className="social listing-link" onClick={() => {window.open(listing.instagram, '_blank', 'noopener,noreferrer');}}>
                                     <IoLogoInstagram />
