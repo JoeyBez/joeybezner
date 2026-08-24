@@ -44,7 +44,7 @@ function App() {
   return (
     <div style={{marginTop:"5rem"}}>
       <nav>
-        <div onClick={() => changePage("")} className="link"><h1>Joey Bezner</h1></div>
+        <div onClick={() => changePage("")}><h1 style={{cursor:"pointer"}}>Joey Bezner</h1></div>
         <div className='link-container desktop'>
           {
             categories.map((category, key) => (
@@ -70,7 +70,7 @@ function App() {
       </div>
       <br />
       <Routes>
-        <Route path='/' element={<div>Home!</div>} />
+        <Route path='/' element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category={null} />} />
         {
           categories.map((category, key) => (
               <Route path={`/${formatCategory(category)}`} element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category={category} />} key={key} />

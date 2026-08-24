@@ -61,8 +61,9 @@ export default function DisplayListing(params){
                     <div className="d-info">
                         <small className="d-category" onClick={() => navigate(`/${formatCategory(listing.category)}`)}>{listing.category}</small>
                         <small className="d-title">{listing.title}</small>
+                        {listing.subtitle && <small className="d-subtitle">{listing.subtitle}</small>}
                         <small className="d-year">{listing.medium}, {listing.year}</small>
-                        <small>{listing.description || "No description provided."}</small>
+                        <small>{listing.description || ""}</small>
                         <div style={{marginTop:"1rem"}}>
                             {listing.instagram && 
                                 <div className="social listing-link" onClick={() => {window.open(listing.instagram, '_blank', 'noopener,noreferrer');}}>
@@ -71,10 +72,7 @@ export default function DisplayListing(params){
                                 </div>
                             }
                             {listing.spotify && 
-                                <div className="social listing-link" onClick={() => {window.open(listing.spotify, '_blank', 'noopener,noreferrer');}}>
-                                    <FaSpotify />
-                                    <small>View on Spotify</small>
-                                </div>
+                                <div dangerouslySetInnerHTML={{__html: listing.spotify}}/>
                             }
                         </div>
                     </div>

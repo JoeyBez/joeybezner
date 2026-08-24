@@ -88,6 +88,12 @@ img{
     border-bottom: 1px solid var(--accent-highlight);
 }
 
+.d-subtitle{
+    color: var(--accent-color);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
 .listing-link{
     display: flex;
     gap: 0.3rem;

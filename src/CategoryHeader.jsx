@@ -3,7 +3,7 @@ export default function CategoryHeader(params){
 
     return (
         <div className="category-header">
-            <h2>{category}</h2>
+            <h2>{category ? category : "All Works"}</h2>
         </div>
     );
 }
