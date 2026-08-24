@@ -60,6 +60,11 @@
 .more-filters.out{
     animation: fadeOut 0s ease-out forwards;
 }
+.more-filters{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 1rem;
+}
 
 @keyframes fadeIn {
   from {
@@ -81,4 +86,8 @@
     opacity: 0;
     /* height: 0px;   Moves to final position */
   }
+}
+
+@media screen and (min-width: 768px) {
+
 }

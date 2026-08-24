@@ -1,10 +1,15 @@
 import { IoOptions, IoSwapVertical } from "react-icons/io5";
 import './Filter.css'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Filter(params){
     const {filters, setFilters, mediums} = params;
     const [displayFilters, setDisplayFilters] = useState(false);
+    const [filterCount, setFilterCount] = useState(0);
+
+    useEffect(() => {
+        setFilterCount(Object.entries(filters).filter(([key, value]) => value === true && key != "cleared").length);
+    }, [filters])
 
     return(
         <div style={{marginBottom:"2rem", display:"flex"}}>
@@ -12,7 +17,7 @@ export default function Filter(params){
                 <div className="filter-bar" onClick={() => setDisplayFilters(!displayFilters)}>
                     <IoOptions />
                     <small>Filter</small>
-                    {/* <small className="filter-bar-number">2</small> */}
+                    {filterCount > 0 && <small className="filter-bar-number">{filterCount}</small>}
                 </div>
                 {!filters.cleared && <small className="clear" onClick={() => {setFilters({cleared:true}); setDisplayFilters(false)}}>Clear</small>}
             </div>

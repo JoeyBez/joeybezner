@@ -33,7 +33,7 @@ export default function DisplayListing(params){
     }, []);
 
     return (
-        <div style={{marginTop:"5rem"}}>
+        <div>
             {
                 loading ? <Loading /> :
                 <div className="d-container">

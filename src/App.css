@@ -20,8 +20,8 @@ nav{
   display: grid;
   align-items: center;
   border-bottom: 1px solid var(--accent-color);
-  grid-template-columns: 1fr 3fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0rem;
   padding-left: 1rem;
   padding-right: 1rem;
   position: fixed;
@@ -31,22 +31,76 @@ nav{
   z-index: 2;
   background-color: white;
   height: 6rem;
+  font-size: 0.8rem;
 }
 
 .link{
   text-decoration: none;
   color: black;
+  cursor: pointer;
 }
 
 .link-container{
   display: flex;
   gap: 1rem;
+  justify-content: right;
   /* border: 1px solid red; */
 }
 .link-container.right{
   justify-content: right;
+  display: none;
+}
+.link-container.mobile{
+  display: flex;
+  font-size: large;
+}
+.link-container.desktop{
+  display: none;
 }
 
 .social{
   cursor: pointer;
+}
+
+.hamburger{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left:0;
+  right:0;
+  z-index: 1;
+}
+.hamburger > .link{
+  border-bottom: 1px solid var(--accent-color);
+  padding: 0.8rem;
+  background-color: white;
+}
+.hamburger.hide{
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  nav{
+    gap: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 6rem;
+    font-size: 1rem;
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+  .link-container.mobile{
+    display: none;
+  }
+  .link-container.desktop{
+    display: flex;
+  }
+  .link-container.right{
+    display: flex;
+  }
+  .link-container{
+    justify-content: left;
+  }
+  .hamburger{
+    display: none;
+  }
 }

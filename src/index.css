@@ -1,6 +1,8 @@
 :root{
     --accent-color: rgb(120, 120, 120);
     --accent-highlight: rgb(170, 170, 170);
+
+    --min-width: 768px;
 }
 
 html, body{

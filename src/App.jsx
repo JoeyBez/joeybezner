@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 import './App.css'
 import Gallery from './Gallery'
-import { BrowserRouter, Routes, Route, Link, useSearchParams } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { supabase } from './lib/supabaseClient';
 import DisplayListing from './DisplayListing';
-import { IoLogoInstagram, IoLogoLinkedin, IoLogoTiktok, IoMailOutline } from 'react-icons/io5';
+import { IoLogoInstagram, IoLogoLinkedin, IoLogoTiktok, IoMenu } from 'react-icons/io5';
 
 function App() {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [displayListing, setDisplayListing] = useState();
 
   const [categories, setCategories] = useState([]);
+  const [openMenu, setOpenMenu] = useState(true);
 
   const getCategories = async () => {
     const { data, error } = await supabase
@@ -26,9 +28,6 @@ function App() {
 
   useEffect(() => {
     getCategories();
-  }, [])
-
-  useEffect(() => {
     setDisplayListing(searchParams.get('listing'));
     // console.log(searchParams.get('listing'));
   }, [searchParams]);
@@ -37,16 +36,24 @@ function App() {
     return c.replace(' ', '_');
   }
 
+  const changePage = (dest) => {
+    navigate(`/${formatCategory(dest)}`);
+    setOpenMenu(false);
+  }
+
   return (
-    <div>
+    <div style={{marginTop:"5rem"}}>
       <nav>
-        <h1>Joey Bezner</h1>
-        <div className='link-container'>
+        <div onClick={() => changePage("")} className="link"><h1>Joey Bezner</h1></div>
+        <div className='link-container desktop'>
           {
             categories.map((category, key) => (
               <Link to={`/${formatCategory(category)}`} key={key} className="link">{category}</Link>
             ))
           }
+        </div>
+        <div className='link-container mobile'>
+          <IoMenu onClick={() => {setOpenMenu(!openMenu)}} style={{cursor:"pointer"}}/>
         </div>
         <div className='link-container right'>
           <IoLogoInstagram className="social" onClick={() => {window.open('https://www.instagram.com/joeybezner/?hl=en', '_blank', 'noopener,noreferrer');}} />
@@ -54,6 +61,13 @@ function App() {
           <IoLogoTiktok className="social" onClick={() => {window.open('https://www.tiktok.com/@joeysart', '_blank', 'noopener,noreferrer');}} />
         </div>
       </nav>
+      <div className={`hamburger ${openMenu ? "" : "hide"}`}>
+        {
+          categories.map((category, key) => (
+            <div onClick={() => {changePage(`${category}`)}} key={key} className="link">{category}</div>
+          ))
+        }
+      </div>
       <br />
       <Routes>
         <Route path='/' element={<div>Home!</div>} />

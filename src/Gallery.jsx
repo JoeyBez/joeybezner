@@ -49,7 +49,7 @@ export default function Gallery(params){
     useEffect(() => {
         // console.log(filters)
         getListings();
-    }, [params, filters]);
+    }, [category, filters]);
 
     // get mediums from database enum
     const [mediums, setMediums] = useState([]);
@@ -70,7 +70,7 @@ export default function Gallery(params){
     }, [])
 
     return (
-        <div style={{marginTop:"5rem"}}>
+        <div>
             <CategoryHeader category={category}/>
             <Filter filters={filters} setFilters={setFilters} mediums={mediums} />
             {loading ? 
