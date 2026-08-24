@@ -12,7 +12,7 @@ export default function Filter(params){
     }, [filters])
 
     return(
-        <div style={{marginBottom:"2rem", display:"flex", borderTop:"1px solid var(--accent-color)", borderBottom:"1px solid var(--accent-color)"}}>
+        <div style={{marginBottom:"2rem", display:"flex", flexDirection:"column", borderTop:"1px solid var(--accent-color)", borderBottom:"1px solid var(--accent-color)", padding:"0.75rem"}}>
             <div style={{display:"flex", gap:"0.5rem", alignItems:"center"}}>
                 <div className="filter-bar" onClick={() => setDisplayFilters(!displayFilters)}>
                     <IoOptions />
@@ -21,8 +21,7 @@ export default function Filter(params){
                 </div>
                 {!filters.cleared && <small className="clear" onClick={() => {setFilters({cleared:true, ascending:false}); setDisplayFilters(false)}}>Clear</small>}
             </div>
-            <div className={`more-filters ${displayFilters ? "in" : "out"}`} style={{display:"flex", gap:"1rem", padding:"1rem"}}>
-                |
+            <div className={`more-filters ${displayFilters ? "in" : "out"}`} style={{display:"flex", gap:"1rem", paddingTop:"1rem"}}>
                 <div className="filter-option">
                     <label onClick={() => {asc.set(!asc.value)}}><IoSwapVertical /> {asc.value ? "Ascending" : "Descending"}</label>
                 </div>
