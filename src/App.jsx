@@ -4,7 +4,7 @@ import Gallery from './Gallery'
 import { BrowserRouter, Routes, Route, Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { supabase } from './lib/supabaseClient';
 import DisplayListing from './DisplayListing';
-import { IoLogoInstagram, IoLogoLinkedin, IoLogoTiktok, IoMenu } from 'react-icons/io5';
+import { IoCallOutline, IoLogoInstagram, IoLogoLinkedin, IoLogoTiktok, IoMailOutline, IoMenu } from 'react-icons/io5';
 import Home from './Home';
 
 function App() {
@@ -15,6 +15,9 @@ function App() {
   const [categories, setCategories] = useState([]);
   const [openMenu, setOpenMenu] = useState(false);
 
+  /** 
+   * Gets category enum from supabase as an array
+  */
   const getCategories = async () => {
     const { data, error } = await supabase
       .rpc('get_categories')
@@ -30,9 +33,12 @@ function App() {
   useEffect(() => {
     getCategories();
     setDisplayListing(searchParams.get('listing'));
-    // console.log(searchParams.get('listing'));
   }, [searchParams]);
 
+  /**
+   * replace the spaces in category with underscore for search params
+   * @param {string} c - any string
+  */
   const formatCategory = (c) => {
     return c.replace(' ', '_');
   }
@@ -79,11 +85,18 @@ function App() {
         }
       </Routes>
       <footer>
-        <small>Joey Bezner</small>
-        <div>
-          <IoLogoInstagram className="social" onClick={() => {window.open('https://www.instagram.com/joeybezner/?hl=en', '_blank', 'noopener,noreferrer');}} />
-          <IoLogoLinkedin className="social" onClick={() => {window.open('https://www.linkedin.com/in/joeybezner/', '_blank', 'noopener,noreferrer');}} />
-          <IoLogoTiktok className="social" onClick={() => {window.open('https://www.tiktok.com/@joeysart', '_blank', 'noopener,noreferrer');}} />
+        <div style={{display:"flex", flexDirection:"column", gap:"0.5rem"}}>
+          <small>Contact</small>
+          <small style={{display:"flex", gap:"0.3rem"}}><IoMailOutline /> joeybezner@gmail.com</small>
+          <small style={{display:"flex", gap:"0.3rem"}}><IoCallOutline /> {'+1 (503)-502-3569'}</small>
+        </div>
+        <div style={{display:"flex", flexDirection:"column", gap:"0.5rem"}}>
+          <small>Socials</small>
+          <div style={{display:"flex", gap:"1rem"}}>
+            <IoLogoInstagram className="social" onClick={() => {window.open('https://www.instagram.com/joeybezner/?hl=en', '_blank', 'noopener,noreferrer');}} />
+            <IoLogoLinkedin className="social" onClick={() => {window.open('https://www.linkedin.com/in/joeybezner/', '_blank', 'noopener,noreferrer');}} />
+            <IoLogoTiktok className="social" onClick={() => {window.open('https://www.tiktok.com/@joeysart', '_blank', 'noopener,noreferrer');}} />
+          </div>
         </div>
       </footer>
     </div>    

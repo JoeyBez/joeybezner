@@ -14,6 +14,7 @@ export default function Gallery(params){
 
     const [filters, setFilters] = useState({cleared:true});
     const [asc, setAsc] = useState(false);
+    const [order, setOrder] = useState("year");
     const [searchParams, setSearchParams] = useSearchParams();
 
     // get listings from supabase table
@@ -36,7 +37,7 @@ export default function Gallery(params){
         }
 
         const { data, error } = await query
-            .order("year", { ascending: asc });
+            .order(order, { ascending: asc });
         
         if(error){
             console.error(error);
@@ -50,7 +51,7 @@ export default function Gallery(params){
     useEffect(() => {
         // console.log(filters)
         getListings();
-    }, [category, filters, asc]);
+    }, [category, filters, asc, order]);
 
     // get mediums from database enum
     const [mediums, setMediums] = useState([]);
@@ -73,7 +74,7 @@ export default function Gallery(params){
     return (
         <div>
             <CategoryHeader category={category}/>
-            <Filter filters={filters} setFilters={setFilters} mediums={mediums} asc={{value: asc, set: setAsc}} />
+            <Filter filters={filters} setFilters={setFilters} mediums={mediums} asc={{value: asc, set: setAsc}} order={{value: order, set: setOrder}} />
             {loading ? 
             <Loading />
             : 

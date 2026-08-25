@@ -3,11 +3,15 @@
     justify-items: center;
     gap: 3rem;
     height: 600px;
-    margin-bottom: 10rem;
+    margin-bottom: 25rem;
 }
 
 .home-info{
     text-align: center;
+    max-width: 50%;
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    padding: 4rem;
+    background-color: white;
 }
 .home-info > p{
     color: var(--accent-color);
