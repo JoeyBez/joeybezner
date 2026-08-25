@@ -6,6 +6,8 @@ import { IoChevronBack, IoLogoInstagram } from "react-icons/io5";
 import { IoIosLink } from "react-icons/io";
 import { GoDotFill } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
+import GetShop from "./GetShop";
+import ShopInfo from "./ShopInfo";
 
 export default function DisplayListing(params){
     const navigate = useNavigate();
@@ -13,6 +15,7 @@ export default function DisplayListing(params){
     const [loading, setLoading] = useState(false);
     const [listing, setListing] = useState({});
     const [image, setImage] = useState(0);
+    const [shop, setShop] = useState();
 
     async function getListing(){
         setLoading(true);
@@ -26,8 +29,13 @@ export default function DisplayListing(params){
             return;
         }
 
-        console.log(data[0].img);
+        // console.log(data[0].img);
         setListing(data[0]);
+
+        const s_data = await GetShop(setLoading, data[0].id);
+        // console.log(s_data);
+        setShop(s_data);
+
         setLoading(false);
     }
 
@@ -64,6 +72,9 @@ export default function DisplayListing(params){
                         {listing.subtitle && <small className="d-subtitle">{listing.subtitle}</small>}
                         <small className="d-year">{listing.medium}, {listing.year}</small>
                         <small>{listing.description || ""}</small>
+                        {shop ? shop.length > 0 ? 
+                            <ShopInfo shop={shop} listing={listing} />
+                        : null : null}
                         <div style={{marginTop:"1rem"}}>
                             {listing.external_link &&
                                 <div className="social listing-link" onClick={() => {window.open(listing.external_link.link, '_blank', 'noopener,noreferrer');}}>
