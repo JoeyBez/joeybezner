@@ -3,14 +3,14 @@
     justify-items: center;
     gap: 3rem;
     height: 600px;
-    margin-bottom: 30rem;
+    margin-bottom: 370px;
 }
 
 .home-info{
     text-align: center;
-    max-width: 50%;
+    max-width: 80%;
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
-    padding: 4rem;
+    padding: 2rem;
     background-color: white;
 }
 .home-info > p{
@@ -79,6 +79,8 @@
     .home-info{
         text-align: left;
         width: fit-content;
+        max-width: 60%;
+        padding: 4rem;
     }
     .featured{
         position: relative;
