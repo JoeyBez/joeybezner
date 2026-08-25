@@ -74,7 +74,7 @@ export default function Gallery(params){
     return (
         <div>
             <CategoryHeader category={category}/>
-            <Filter filters={filters} setFilters={setFilters} mediums={mediums} asc={{value: asc, set: setAsc}} order={{value: order, set: setOrder}} />
+            {/* <Filter filters={filters} setFilters={setFilters} mediums={mediums} asc={{value: asc, set: setAsc}} order={{value: order, set: setOrder}} /> */}
             {loading ? 
             <Loading />
             : 

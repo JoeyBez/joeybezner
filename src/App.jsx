@@ -6,6 +6,8 @@ import { supabase } from './lib/supabaseClient';
 import DisplayListing from './DisplayListing';
 import { IoCallOutline, IoLogoInstagram, IoLogoLinkedin, IoLogoTiktok, IoMailOutline, IoMenu } from 'react-icons/io5';
 import Home from './Home';
+import CategoryHeader from './CategoryHeader';
+import Videos from './Videos';
 
 function App() {
   const navigate = useNavigate();
@@ -51,16 +53,19 @@ function App() {
   return (
     <div style={{marginTop:"5rem"}}>
       <nav>
-        <div onClick={() => changePage("")}><h1 style={{cursor:"pointer"}}>Joey Bezner</h1></div>
+        {/* <div onClick={() => changePage("")}><p className="link" style={{cursor:"pointer", width:"fit-content"}}>Home</p></div> */}
         <div className='link-container desktop'>
-          {
-            categories.map((category, key) => (
-              <Link to={`/${formatCategory(category)}`} key={key} className="link">{category}</Link>
-            ))
-          }
+          <Link to='/' className="link">Home</Link>
+          <Link to='/Realism' className="link">Realism</Link>
+          <Link to='/Cover_Art' className="link">Cover Art</Link>
+          <Link to='/Digital' className="link">Digital</Link>
+          <Link to='/Clothing' className="link">Clothing</Link>
+          <Link to='/Paintings' className="link">Paintings</Link>
+          <Link to='/Videos' className="link">Videos</Link>
         </div>
         <div className='link-container mobile'>
-          <IoMenu onClick={() => {setOpenMenu(!openMenu)}} style={{cursor:"pointer"}}/>
+          <div onClick={() => changePage("")}><p className="link" style={{cursor:"pointer", width:"fit-content"}}>Home</p></div>
+          <div style={{textAlign:"right"}}><IoMenu style={{cursor:"pointer"}} onClick={() => {setOpenMenu(!openMenu)}} /></div>
         </div>
         <div className='link-container right'>
           <IoLogoInstagram className="social" onClick={() => {window.open('https://www.instagram.com/joeybezner/?hl=en', '_blank', 'noopener,noreferrer');}} />
@@ -74,15 +79,17 @@ function App() {
             <div onClick={() => {changePage(`${category}`)}} key={key} className="link">{category}</div>
           ))
         }
+        <div onClick={() => {changePage('Videos')}} className="link">Videos</div>
       </div>
       <br />
       <Routes>
         <Route path='/' element={displayListing ? <DisplayListing id={displayListing} /> : <div><Home /><Gallery category={null} /></div>} />
-        {
-          categories.map((category, key) => (
-              <Route path={`/${formatCategory(category)}`} element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category={category} />} key={key} />
-          ))
-        }
+        <Route path='/Realism' element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category="Realism" />} />
+        <Route path='/Cover_Art' element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category="Cover Art" />} />
+        <Route path='/Digital' element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category="Digital" />} />
+        <Route path='/Clothing' element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category="Clothing" />} />
+        <Route path='/Paintings' element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category="Paintings" />} />
+        <Route path='/Videos' element={<Videos />} />
       </Routes>
       <footer>
         <div style={{display:"flex", flexDirection:"column", gap:"0.5rem"}}>

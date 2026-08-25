@@ -42,12 +42,13 @@ export default function Home(){
             {/* style={{backgroundImage: listings.length > 0 ? `url("${listings[0].img[0]}")` : ""}} */}
             <div className="home-info">
                 <h1>Joey Bezner</h1>
+                <p>University of Oregon Alum, Bachelor of Arts in Art with a minor in Computer Information Technology.</p>
                 <p>Multimedia Artist with professional experience in <i>Illustration, Graphic Design, and Web/Game Development</i>.</p>
                 <br />
                 <p><IoLocationOutline /> Brooklyn, NY</p>
             </div>
             <div className="featured-container" style={{textAlign:"center"}}>
-                <h3 style={{marginBottom:"1rem"}}>Featured Works</h3>
+                <h3 style={{marginBottom:"1rem"}}>Featured</h3>
                 {loading ? 
                 <Loading />
                 :
