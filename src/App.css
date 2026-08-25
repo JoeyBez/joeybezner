@@ -58,7 +58,7 @@ nav{
 }
 .link-container.mobile{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   font-size: large;
   /* border: 1px solid red; */
   align-items: center;

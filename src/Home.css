@@ -12,6 +12,7 @@
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
     padding: 2rem;
     background-color: white;
+    border-radius: 20px;
 }
 .home-info > p{
     color: var(--accent-color);

@@ -17,16 +17,23 @@ export default function Gallery(params){
     const [order, setOrder] = useState("year");
     const [searchParams, setSearchParams] = useSearchParams();
 
+    const [shop, setShop] = useState(false);
     // get listings from supabase table
-    async function getListings(){
+    async function getListings(isShop){
         setLoading(true);
-        let query = supabase
+        let query = 
+        isShop ? 
+        supabase
+            .from("shop")
+            .select("*, listing (*) ")
+        :
+        supabase
             .from("listings")
             .select("id,img");
         
-        if(category != null) { query.eq("category", category); }
+        if(category != null && !isShop) { query.eq("category", category); }
 
-        if (!filters.cleared) {
+        if (!filters.cleared && !isShop) {
             const mediums = Object.keys(filters).filter(
                 key => key !== "cleared" && filters[key]
             );
@@ -35,22 +42,25 @@ export default function Gallery(params){
                 query = query.in("medium", mediums);
             }
         }
-
-        const { data, error } = await query
-            .order(order, { ascending: asc });
+        
+        if(!isShop) {query.order(order, { ascending: asc });}
+        const { data, error } = await query;
         
         if(error){
             console.error(error);
             return;
         }else{
             setLoading(false);
+            // console.log(data, isShop);
             setListings(data);
         }
     }
 
     useEffect(() => {
         // console.log(filters)
-        getListings();
+        let s = category == "Shop";
+        setShop(s);
+        getListings(s);
     }, [category, filters, asc, order]);
 
     // get mediums from database enum
@@ -81,8 +91,13 @@ export default function Gallery(params){
             listings.length > 0 ?
             (<div className="container">
                 {listings.map((listing, key) => (
-                    <div className="listing" key={listing.id} onClick={() => setSearchParams({"listing": listing.id})}>
-                        <img src={listing.img[0]} alt="Artwork Image" className="listing-image" />
+                    <div className="listing" key={shop ? listing.listing.id : listing.id} onClick={() => setSearchParams({"listing": shop ? listing.listing.id : listing.id})}>
+                        <img src={shop ? listing.listing.img[0] : listing.img[0]} alt="Artwork Image" className="listing-image" />
+                        {shop && <div className="listing-shop-info">
+                            <p className="left">${listing.price}</p>
+                            {/* <p className="title">{listing.listing.title}</p> */}
+                            <p className="right">{listing.type}</p>
+                        </div>}
                     </div>
                 ))}
             </div>)

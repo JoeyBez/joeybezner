@@ -4,6 +4,33 @@
     transition: 0.2s;
     animation: fadeInUp 0.5s ease-out forwards;
     max-width: 400px;
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+    justify-content: center;
+}
+
+.listing-shop-info{
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
+  display: flex;
+  gap: 1rem;
+  width: 90%;
+  margin: auto;
+  height: fit-content;
+  align-items: center;
+  /* height: 30px; */
+  /* bottom: 0.5rem; */
+}
+.listing-shop-info > .left{
+  text-align: left;
+  /* font-size: 1.3rem; */
+  font-weight: 550;
+}
+.listing-shop-info > .right{
+  text-align: right;
+  color: var(--accent-color);
 }
 
 .listing:hover{
@@ -12,9 +39,9 @@
 
 .listing-image{
     width: 90%;
-    height: 100%;
+    /* height: 100%; */
     object-fit: contain;
-    margin-bottom: 1rem;
+    /* border: 1px solid blue; */
 }
 
 .container{

@@ -56,6 +56,7 @@ function App() {
         {/* <div onClick={() => changePage("")}><p className="link" style={{cursor:"pointer", width:"fit-content"}}>Home</p></div> */}
         <div className='link-container desktop'>
           <Link to='/' className="link">Home</Link>
+          <Link to='/Shop' className="link">Shop</Link>
           <Link to='/Realism' className="link">Realism</Link>
           <Link to='/Cover_Art' className="link">Cover Art</Link>
           <Link to='/Digital' className="link">Digital</Link>
@@ -65,7 +66,10 @@ function App() {
         </div>
         <div className='link-container mobile'>
           <div onClick={() => changePage("")}><p className="link" style={{cursor:"pointer", width:"fit-content"}}>Home</p></div>
-          <div style={{textAlign:"right"}}><IoMenu style={{cursor:"pointer"}} onClick={() => {setOpenMenu(!openMenu)}} /></div>
+          <div onClick={() => changePage("Shop")} style={{justifyItems:"center"}}><p className="link" style={{cursor:"pointer", width:"fit-content"}}>Shop</p></div>
+          <div style={{textAlign:"right"}}>
+            <IoMenu style={{cursor:"pointer"}} onClick={() => {setOpenMenu(!openMenu)}} />
+          </div>
         </div>
         <div className='link-container right'>
           <IoLogoInstagram className="social" onClick={() => {window.open('https://www.instagram.com/joeybezner/?hl=en', '_blank', 'noopener,noreferrer');}} />
@@ -90,6 +94,7 @@ function App() {
         <Route path='/Clothing' element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category="Clothing" />} />
         <Route path='/Paintings' element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category="Paintings" />} />
         <Route path='/Videos' element={<Videos />} />
+        <Route path='/Shop' element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category={"Shop"} />} />
       </Routes>
       <footer>
         <div style={{display:"flex", flexDirection:"column", gap:"0.5rem"}}>
