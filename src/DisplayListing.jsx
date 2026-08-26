@@ -55,6 +55,7 @@ export default function DisplayListing(params){
                     <div className="d-images">
                         {(listing.img ? listing.img.length > 1 : false) && <button className="d-button left" onClick={() => setImage(image - 1 < 0 ? listing.img.length - 1 : image - 1)}>{<IoChevronBack />}</button>}
                         {(listing.img ? listing.img.length > 1 : false) && <button className="d-button right" onClick={() => setImage((image + 1) % listing.img.length)}>{<IoChevronBack />}</button>}
+                        <img src={listing.img ? listing.img[image] : listing.img} alt="" />
                         {(listing.img ? listing.img.length > 1 : false) && 
                             <div className="d-dots">
                                 {
@@ -64,7 +65,6 @@ export default function DisplayListing(params){
                                 }
                             </div>
                         }
-                        <img src={listing.img ? listing.img[image] : listing.img} alt="" />
                     </div>
                     <div className="d-info">
                         <small className="d-category" onClick={() => navigate(`/${formatCategory(listing.category)}`)}>{listing.category}</small>

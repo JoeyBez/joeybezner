@@ -1,5 +1,4 @@
 .home{
-    display: grid;
     justify-items: center;
     gap: 3rem;
     height: 600px;
@@ -19,64 +18,24 @@
 }
 
 .featured{
+    justify-content: center;
+    margin: auto;
+    height: inherit;
     position: relative;
-    width: 400px;
-    height: 400px;
-    align-content: center;
+    width: 100%;
     /* border: 1px solid red; */
 }
 .featured > div{
-    width: 400px;
-    height: 400px;
+    width: 80vw;
+    height: 80vw;
     object-fit: contain;
+    margin: auto;
 }
 .featured-container{
-    width: 400px;
-    height: 400px;
+    /* height: 400px; */
+    width: 100%;
     align-items: center;
     /* border: 1px solid blue; */
-}
-
-.d-button{
-    position: absolute;
-    width: 30px;
-    height: 30px; 
-    top: 50%;
-    border: none;
-    border-radius: 100px;
-    z-index: 1;
-    color: white;
-    background-color: var(--accent-highlight);
-    text-align: center;
-    padding: 0.5rem;
-    transition: 0.2s;
-    opacity: 70%;
-}
-.d-button:hover{
-    background-color: var(--accent-color);
-    scale: 1.05;
-}
-.d-button.left{
-    left: -1rem;
-}
-.d-button.right{
-    right:-1rem;
-    transform: scaleX(-1);
-}
-.d-dots{
-    position:relative;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    /* border: 1px solid red; */
-    bottom: -1rem;
-    text-align: center;
-}
-.d-dot{
-    color: var(--accent-highlight);
-}
-.d-dot.selected{
-    color: var(--accent-color);
 }
 
 .cta{
@@ -96,6 +55,7 @@
 
 @media screen and (min-width: 768px) {
     .home{
+        display: grid;
         grid-template-columns: 1fr 1fr;
         height: 600px;
         margin-bottom: 0;

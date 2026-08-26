@@ -51,6 +51,7 @@
     width: inherit;
     margin: auto;
     justify-items: center;
+    padding: 1rem;
 }
 
 @keyframes fadeInUp {
