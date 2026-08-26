@@ -3,7 +3,7 @@ import './Filter.css'
 import { useEffect, useState } from "react";
 
 export default function Filter(params){
-    const {filters, setFilters, mediums, asc, order} = params;
+    const {filters, setFilters, mediums, asc, order, shop = false} = params;
     const [displayFilters, setDisplayFilters] = useState(false);
     const [filterCount, setFilterCount] = useState(0);
 
@@ -27,6 +27,7 @@ export default function Filter(params){
             </div>
             <div className={`more-filters ${displayFilters ? "in" : "out"}`} style={{display:"flex", gap:"1rem", paddingTop:"1rem"}}>
                 <select value={order.value} onChange={handleChange}>
+                    {shop && <option value="price">Price</option>}
                     <option value="year" selected>Year</option>
                     <option value="medium">Medium</option>
                     <option value="title">Title</option>

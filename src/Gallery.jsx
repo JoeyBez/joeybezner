@@ -19,13 +19,13 @@ export default function Gallery(params){
 
     const [shop, setShop] = useState(false);
     // get listings from supabase table
-    async function getListings(isShop){
+    async function getListings(isShop, n_order){
         setLoading(true);
         let query = 
         isShop ? 
         supabase
             .from("shop")
-            .select("*, listing (*) ")
+            .select("*, listing!inner (*) ")
         :
         supabase
             .from("listings")
@@ -33,17 +33,17 @@ export default function Gallery(params){
         
         if(category != null && !isShop) { query.eq("category", category); }
 
-        if (!filters.cleared && !isShop) {
+        if (!filters.cleared) {
             const mediums = Object.keys(filters).filter(
                 key => key !== "cleared" && filters[key]
             );
 
             if (mediums.length > 0) {
-                query = query.in("medium", mediums);
+                query = query.in(isShop ? "listing.medium" : "medium", mediums);
             }
         }
         
-        if(!isShop) {query.order(order, { ascending: asc });}
+        if(!isShop) {query.order(n_order, { ascending: asc });}
         const { data, error } = await query;
         
         if(error){
@@ -51,7 +51,18 @@ export default function Gallery(params){
             return;
         }else{
             setLoading(false);
-            // console.log(data, isShop);
+            if(isShop){
+                if(n_order == "price"){
+                    data.sort((a, b) => {
+                        return asc ? a.price - b.price : b.price - a.price;
+                    });
+                }else{
+                    data.sort((a, b) => {
+                        return asc ? a.listing[n_order] - b.listing[n_order] : b.listing[n_order] - a.listing[n_order];
+                    });
+                }
+            }
+            console.log(data, isShop);
             setListings(data);
         }
     }
@@ -59,8 +70,10 @@ export default function Gallery(params){
     useEffect(() => {
         // console.log(filters)
         let s = category == "Shop";
+        let o = s ? order : order == "price" ? "year" : order;
+        setOrder(o);
         setShop(s);
-        getListings(s);
+        getListings(s, o);
     }, [category, filters, asc, order]);
 
     // get mediums from database enum
@@ -84,7 +97,7 @@ export default function Gallery(params){
     return (
         <div>
             <CategoryHeader category={category}/>
-            {/* <Filter filters={filters} setFilters={setFilters} mediums={mediums} asc={{value: asc, set: setAsc}} order={{value: order, set: setOrder}} /> */}
+            <Filter filters={filters} setFilters={setFilters} mediums={mediums} asc={{value: asc, set: setAsc}} order={{value: order, set: setOrder}} shop={category == "Shop"} />
             {loading ? 
             <Loading />
             : 

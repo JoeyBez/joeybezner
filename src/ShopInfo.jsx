@@ -26,6 +26,10 @@ export default function ShopInfo(params){
                 <p>Date Posted</p>
                 <div><p>{shop[0].date_posted.toString().slice(0, 10)}</p></div>
             </div>
+            {shop[0].paper && <div className="specs-button">
+                <p>Paper Type</p>
+                <div><p>{shop[0].paper}</p></div>
+            </div>}
         </div>
     </div> 
     );
