@@ -56,13 +56,7 @@ function App() {
         {/* <div onClick={() => changePage("")}><p className="link" style={{cursor:"pointer", width:"fit-content"}}>Home</p></div> */}
         <div className='link-container desktop'>
           <Link to='/' className="link">Home</Link>
-          <Link to='/Shop' className="link">Shop</Link>
-          <Link to='/Realism' className="link">Realism</Link>
-          <Link to='/Cover_Art' className="link">Cover Art</Link>
-          <Link to='/Digital' className="link">Digital</Link>
-          <Link to='/Clothing' className="link">Clothing</Link>
-          <Link to='/Paintings' className="link">Paintings</Link>
-          <Link to='/Videos' className="link">Videos</Link>
+          <Link to='/Shop' className="link" style={{marginRight:"5rem"}}>Shop</Link>
         </div>
         <div className='link-container mobile'>
           <div onClick={() => changePage("")}><p className="link" style={{cursor:"pointer", width:"fit-content"}}>Home</p></div>
@@ -71,10 +65,20 @@ function App() {
             <IoMenu style={{cursor:"pointer"}} onClick={() => {setOpenMenu(!openMenu)}} />
           </div>
         </div>
-        <div className='link-container right'>
-          <IoLogoInstagram className="social" onClick={() => {window.open('https://www.instagram.com/joeybezner/?hl=en', '_blank', 'noopener,noreferrer');}} />
-          <IoLogoLinkedin className="social" onClick={() => {window.open('https://www.linkedin.com/in/joeybezner/', '_blank', 'noopener,noreferrer');}} />
-          <IoLogoTiktok className="social" onClick={() => {window.open('https://www.tiktok.com/@joeysart', '_blank', 'noopener,noreferrer');}} />
+        <div className="link-container desktop right">
+          <div className='link-container desktop right'>
+            <Link to='/Realism' className="link">Realism</Link>
+            <Link to='/Cover_Art' className="link">Cover Art</Link>
+            <Link to='/Digital' className="link">Digital</Link>
+            <Link to='/Clothing' className="link">Clothing</Link>
+            <Link to='/Paintings' className="link">Paintings</Link>
+            <Link to='/Videos' className="link">Videos</Link>
+          </div>
+          {/* <div className='link-container right'>
+            <IoLogoInstagram className="social" onClick={() => {window.open('https://www.instagram.com/joeybezner/?hl=en', '_blank', 'noopener,noreferrer');}} />
+            <IoLogoLinkedin className="social" onClick={() => {window.open('https://www.linkedin.com/in/joeybezner/', '_blank', 'noopener,noreferrer');}} />
+            <IoLogoTiktok className="social" onClick={() => {window.open('https://www.tiktok.com/@joeysart', '_blank', 'noopener,noreferrer');}} />
+          </div> */}
         </div>
       </nav>
       <div className={`hamburger ${openMenu ? "" : "hide"}`}>

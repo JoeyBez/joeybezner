@@ -3,13 +3,13 @@
     justify-items: center;
     gap: 3rem;
     height: 600px;
-    margin-bottom: 370px;
+    margin-bottom: 350px;
 }
 
 .home-info{
     text-align: center;
     max-width: 80%;
-    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    /* box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5); */
     padding: 2rem;
     background-color: white;
     border-radius: 20px;
@@ -20,12 +20,21 @@
 
 .featured{
     position: relative;
-    height: 450px;
+    width: 400px;
+    height: 400px;
     align-content: center;
+    /* border: 1px solid red; */
+}
+.featured > div{
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
 }
 .featured-container{
-    height: 550px;
+    width: 400px;
+    height: 400px;
     align-items: center;
+    /* border: 1px solid blue; */
 }
 
 .d-button{
@@ -48,19 +57,19 @@
     scale: 1.05;
 }
 .d-button.left{
-    left: 0;
+    left: -1rem;
 }
 .d-button.right{
-    right:0;
+    right:-1rem;
     transform: scaleX(-1);
 }
 .d-dots{
-    position: absolute;
+    position:relative;
     left: 0;
     right: 0;
     z-index: 1;
     /* border: 1px solid red; */
-    bottom: -3rem;
+    bottom: -1rem;
     text-align: center;
 }
 .d-dot{
@@ -68,6 +77,21 @@
 }
 .d-dot.selected{
     color: var(--accent-color);
+}
+
+.cta{
+    padding: 1rem;
+    height: 50px;
+    width: 100px;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+.cta:hover{
+    color: black;
+    background-color: var(--accent-highlight);
 }
 
 @media screen and (min-width: 768px) {
