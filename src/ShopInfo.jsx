@@ -11,7 +11,7 @@ export default function ShopInfo(params){
     <div className="shop-container">
         {/* <small className="shop-type">{shop[0].type.toString()}</small> */}
         <h1 className="shop-price">${shop[0].price}</h1>
-        <a className="shop-button" href={`mailto:joeybezner@gmail.com?subject=${listing.title} inquiry - ${listing.id}&body=${emailBody}`}>Inquire</a>
+        <a className="shop-button" href={`mailto:contact@joeybezner.com?subject=${listing.title} inquiry - ${listing.id}&body=${emailBody}`}>Inquire</a>
         <div className="specs">
             {/* <div className="specs-button">
                 <p>Product Specs</p>

@@ -103,7 +103,7 @@ function App() {
       <footer>
         <div style={{display:"flex", flexDirection:"column", gap:"0.5rem"}}>
           <small>Contact</small>
-          <small style={{display:"flex", gap:"0.3rem"}}><IoMailOutline /> joeybezner@gmail.com</small>
+          <small style={{display:"flex", gap:"0.3rem"}}><IoMailOutline /> contact@joeybezner.com</small>
           <small style={{display:"flex", gap:"0.3rem"}}><IoCallOutline /> {'+1 (503)-502-3569'}</small>
         </div>
         <div style={{display:"flex", flexDirection:"column", gap:"0.5rem"}}>
