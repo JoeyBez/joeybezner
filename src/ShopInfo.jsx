@@ -4,16 +4,19 @@ import './ShopInfo.css'
 export default function ShopInfo(params){
     const {shop, listing} = params;
 
+    const emailBody = `
+        Hello, I am interested in purchasing ${listing.title}.
+    `;
     return (
     <div className="shop-container">
         {/* <small className="shop-type">{shop[0].type.toString()}</small> */}
         <h1 className="shop-price">${shop[0].price}</h1>
-        <a className="shop-button" href={`mailto:joeybezner@gmail.com?subject=${listing.title} inquiry - ${listing.id}`}>Inquire</a>
+        <a className="shop-button" href={`mailto:joeybezner@gmail.com?subject=${listing.title} inquiry - ${listing.id}&body=${emailBody}`}>Inquire</a>
         <div className="specs">
-            <div className="specs-button">
+            {/* <div className="specs-button">
                 <p>Product Specs</p>
                 <div><IoChevronBack className="icon"/></div>
-            </div>
+            </div> */}
             <div className="specs-button">
                 <p>Type</p>
                 <div><p>{shop[0].type.toString()}</p></div>

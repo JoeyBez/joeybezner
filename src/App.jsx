@@ -55,13 +55,13 @@ function App() {
       <nav>
         {/* <div onClick={() => changePage("")}><p className="link" style={{cursor:"pointer", width:"fit-content"}}>Home</p></div> */}
         <div className='link-container desktop'>
-          <Link to='/' className="link">Home</Link>
+          <Link to='/' className="link" style={{fontWeight:"550", fontSize:"1.4rem", marginRight:"1rem"}}>Joey Bezner</Link>
           <Link to='/Shop' className="link" style={{marginRight:"5rem"}}>Shop</Link>
         </div>
         <div className='link-container mobile'>
-          <div onClick={() => changePage("")}><p className="link" style={{cursor:"pointer", width:"fit-content"}}>Home</p></div>
-          <div onClick={() => changePage("Shop")} style={{justifyItems:"center"}}><p className="link" style={{cursor:"pointer", width:"fit-content"}}>Shop</p></div>
-          <div style={{textAlign:"right"}}>
+          <div onClick={() => changePage("")}><p className="link" style={{cursor:"pointer", width:"fit-content", fontWeight:"550", fontSize:"1.4rem"}}>Joey Bezner</p></div>
+          <div style={{textAlign:"right", display:"flex", justifyContent:"right", alignItems:"center", gap:"1rem"}}>
+            <div onClick={() => changePage("Shop")} style={{justifyItems:"center"}}><p className="link" style={{cursor:"pointer", width:"fit-content"}}>Shop</p></div>
             <IoMenu style={{cursor:"pointer"}} onClick={() => {setOpenMenu(!openMenu)}} />
           </div>
         </div>
