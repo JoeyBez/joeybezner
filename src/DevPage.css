@@ -1,0 +1,28 @@
+tr:nth-child(even){
+    background-color: #ddd;
+}
+td, th{
+    padding: 1rem;
+}
+tr, thead{
+    border-bottom: 1px solid black;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.status{
+    border-radius: 10px;
+    padding: 0.5rem;
+    width: fit-content;
+}
+.Waiting{
+    background-color: rgb(244, 132, 132);
+}
+.Done{
+    background-color: rgb(132, 244, 153);
+}
+.InProgress{
+    background-color: rgb(244, 235, 132);
+}

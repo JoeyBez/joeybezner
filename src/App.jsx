@@ -9,6 +9,7 @@ import Home from './Home';
 import CategoryHeader from './CategoryHeader';
 import Videos from './Videos';
 import CommissionForm from './CommissionForm';
+import DevPage from './DevPage';
 
 function App() {
   const navigate = useNavigate();
@@ -100,6 +101,8 @@ function App() {
         <Route path='/Paintings' element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category="Paintings" />} />
         <Route path='/Videos' element={<Videos />} />
         <Route path='/Shop' element={displayListing ? <DisplayListing id={displayListing} /> : <CommissionForm />} />
+
+        <Route path='/dev' element={<DevPage />} />
       </Routes>
       <footer>
         <div style={{display:"flex", flexDirection:"column", gap:"0.5rem"}}>

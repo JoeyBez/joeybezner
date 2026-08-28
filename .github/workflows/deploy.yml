@@ -50,10 +50,17 @@ jobs:
           else
             echo "✅ VITE_RESEND_API_KEY exists"
           fi
+
+          if [ -z "$VITE_PASSWORD" ]; then
+            echo "❌ VITE_PASSWORD is missing"
+          else
+            echo "✅ VITE_PASSWORD exists"
+          fi
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
           VITE_RESEND_API_KEY: ${{ secrets.VITE_RESEND_API_KEY }}
+          VITE_PASSWORD: ${{ secrets.VITE_PASSWORD }}
 
       - name: Build
         run: CI='' npm run build && cp ./dist/index.html ./dist/404.html # THE FIX
@@ -61,6 +68,7 @@ jobs:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
           VITE_RESEND_API_KEY: ${{ secrets.VITE_RESEND_API_KEY }}
+          VITE_PASSWORD: ${{ secrets.VITE_PASSWORD }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
