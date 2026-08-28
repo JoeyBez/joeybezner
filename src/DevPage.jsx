@@ -113,20 +113,20 @@ export default function DevPage() {
       {searchParams.get("password") == password ? (
         <div>
           <h2>Commisions</h2>
+          <button
+            onClick={() => {
+              if (adding) {
+                addCommission();
+              }
+              setAdding(true);
+            }}
+          >
+            {adding ? "Save" : "Add"}
+          </button>
           {loading ? (
             <Loading />
           ) : (
             <div className="table-container">
-              <button
-                onClick={() => {
-                  if (adding) {
-                    addCommission();
-                  }
-                  setAdding(true);
-                }}
-              >
-                {adding ? "Save" : "Add"}
-              </button>
               <table style={{ textAlign: "left" }}>
                 <thead>
                   <th>Name</th>

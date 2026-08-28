@@ -39,3 +39,7 @@ span > input{
     height: 25px;
     max-width: 200px;
 }
+
+textarea{
+    border: 1px solid black;
+}

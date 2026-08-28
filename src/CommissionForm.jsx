@@ -88,7 +88,7 @@ export default function CommissionForm(){
             </div>
             :
             <form onSubmit={submit}>
-                <p style={{fontSize:"1rem", textAlign:"left"}}>Get your own personilzed colored pencil portrait. Fill out this form to receive a quote. Prices will vary based on size and complexity.</p>
+                <p style={{fontSize:"1rem", textAlign:"left"}}>Get your own personalized colored pencil portrait. Fill out this form to receive a quote. Prices will vary based on size and complexity.</p>
                 <div className='form-names'>
                     <span className="form-input">
                         <label><small>First Name</small></label>
