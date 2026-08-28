@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './CommissionForm.css'
 import { supabase } from './lib/supabaseClient';
 import Loading from './Loading';
+import GetPrice from './GetPrice';
 
 export default function CommissionForm(){
     const [firstName, setFirstName] = useState("");
@@ -32,12 +33,12 @@ export default function CommissionForm(){
             formData.append("photo", photo);
         }
 
-        console.log("PHOTO:", {
-            exists: photo instanceof File,
-            name: photo instanceof File ? photo.name : null,
-            type: photo instanceof File ? photo.type : null,
-            size: photo instanceof File ? photo.size : null,
-        });
+        // console.log("PHOTO:", {
+        //     exists: photo instanceof File,
+        //     name: photo instanceof File ? photo.name : null,
+        //     type: photo instanceof File ? photo.type : null,
+        //     size: photo instanceof File ? photo.size : null,
+        // });
 
         const { data, error } = await supabase.functions.invoke(
             "resend",
@@ -54,7 +55,25 @@ export default function CommissionForm(){
 
         setResult("Commission request received! You should get a response soon.");
         setLoading(false);
+
+        addCommission();
     };
+
+    async function addCommission(){
+        const {error} = await supabase
+            .from('commissions')
+            .insert({
+                name: `${firstName} ${lastName}`, 
+                email: email, 
+                price: GetPrice(width, height)
+            });
+        
+        if(error){
+            console.error(error);
+            setLoading(false);
+            return;
+        }
+    }
 
     return(
         <div style={{textAlign:"center"}}>
