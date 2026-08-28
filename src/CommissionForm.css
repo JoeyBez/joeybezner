@@ -1,0 +1,33 @@
+.form-input{
+    display: flex;
+    flex-direction: column;
+    gap:0.1rem;
+    /* max-width: 200px; */
+    text-align: left;
+}
+.form-names{
+    display: flex;
+    gap:1rem;
+}
+
+form{
+    width: max-content;;
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    text-align: center;
+    margin: auto;
+}
+
+.form-submit{
+    width: fit-content;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin: auto;
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}

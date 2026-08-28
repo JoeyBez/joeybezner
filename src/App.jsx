@@ -8,6 +8,7 @@ import { IoCallOutline, IoLogoInstagram, IoLogoLinkedin, IoLogoTiktok, IoMailOut
 import Home from './Home';
 import CategoryHeader from './CategoryHeader';
 import Videos from './Videos';
+import CommissionForm from './CommissionForm';
 
 function App() {
   const navigate = useNavigate();
@@ -98,7 +99,7 @@ function App() {
         <Route path='/Clothing' element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category="Clothing" />} />
         <Route path='/Paintings' element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category="Paintings" />} />
         <Route path='/Videos' element={<Videos />} />
-        <Route path='/Shop' element={displayListing ? <DisplayListing id={displayListing} /> : <Gallery category={"Shop"} />} />
+        <Route path='/Shop' element={displayListing ? <DisplayListing id={displayListing} /> : <CommissionForm />} />
       </Routes>
       <footer>
         <div style={{display:"flex", flexDirection:"column", gap:"0.5rem"}}>

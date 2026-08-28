@@ -10,3 +10,8 @@ html, body{
 /* border: 1px solid red; */
 overflow-x: hidden;
 }
+
+textarea{
+    font-family: Arial, Helvetica, sans-serif;
+    resize: vertical;
+}

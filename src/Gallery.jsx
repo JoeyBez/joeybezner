@@ -5,7 +5,7 @@ import './App.css'
 import CategoryHeader from "./CategoryHeader";
 import Loading from "./Loading";
 import Filter from "./Filter";
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 export default function Gallery(params){
     const [loading, setLoading] = useState(false);
@@ -97,6 +97,12 @@ export default function Gallery(params){
     return (
         <div>
             <CategoryHeader category={category}/>
+            {/* {shop && 
+                <div style={{marginBottom:"2rem"}}>
+                    <p>Scroll down to see listings or fill out a commision form</p>
+                    <Link to="/" className="link-button">Commision Form</Link>
+                </div>
+            } */}
             <Filter filters={filters} setFilters={setFilters} mediums={mediums} asc={{value: asc, set: setAsc}} order={{value: order, set: setOrder}} shop={category == "Shop"} />
             {loading ? 
             <Loading />

@@ -54,6 +54,14 @@
     padding: 1rem;
 }
 
+.link-button{
+  background-color: black;
+  text-decoration: none;
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
