@@ -85,7 +85,7 @@ export default function CommissionForm(){
                 <span className="form-input">
                     <label><small>Reference Photo</small></label>
                     <input name="Reference Photo" type="file" accept="image/*" onChange={(e) => setPhoto(e.target.files[0])}/>
-                    <small style={{width:"50%", fontSize:"10px"}}>Note: this image will be exactly whats drawn, make sure the quality and lighting are good</small>
+                    <small style={{width:"50%", fontSize:"10px"}}>Note: this image will be exactly whats drawn, make sure the quality and lighting is good</small>
                 </span>
                 <div className='form-names'>
                     <span className="form-input">
