@@ -47,7 +47,7 @@ export default function Home(){
                 <br />
                 <p><IoLocationOutline /> Brooklyn, NY</p>
                 <br />
-                <button onClick={() => {navigate('/Shop');}} className="cta">Shop</button>
+                <button onClick={() => {navigate('/Shop');}} className="cta">Commission</button>
             </div>
             <div className="featured-container" style={{textAlign:"center"}}>
                 <h3 style={{marginBottom:"1rem"}}>Featured</h3>

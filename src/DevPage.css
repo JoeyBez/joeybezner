@@ -10,6 +10,11 @@ tr, thead{
 table {
   border-collapse: collapse;
   width: 100%;
+  
+}
+.table-container{
+    overflow-x: scroll;
+    /* height: 200px; */
 }
 
 .status{
@@ -25,4 +30,9 @@ table {
 }
 .InProgress{
     background-color: rgb(244, 235, 132);
+}
+
+.trash{
+    color: red;
+    cursor: pointer;
 }

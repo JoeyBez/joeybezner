@@ -11,12 +11,14 @@
 }
 
 form{
-    width: max-content;;
+    width: 100%;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     gap:1rem;
     text-align: center;
     margin: auto;
+    font-size: 1.1rem;
 }
 
 .form-submit{
@@ -30,4 +32,10 @@ form{
     border-radius: 10px;
     color: white;
     cursor: pointer;
+}
+
+span > input{
+    border: 1px solid black;
+    height: 25px;
+    max-width: 200px;
 }

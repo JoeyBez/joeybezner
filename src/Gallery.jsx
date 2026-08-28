@@ -103,7 +103,7 @@ export default function Gallery(params){
                     <Link to="/" className="link-button">Commision Form</Link>
                 </div>
             } */}
-            <Filter filters={filters} setFilters={setFilters} mediums={mediums} asc={{value: asc, set: setAsc}} order={{value: order, set: setOrder}} shop={category == "Shop"} />
+            {/* <Filter filters={filters} setFilters={setFilters} mediums={mediums} asc={{value: asc, set: setAsc}} order={{value: order, set: setOrder}} shop={category == "Shop"} /> */}
             {loading ? 
             <Loading />
             : 

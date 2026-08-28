@@ -48,7 +48,7 @@ export default function CommissionForm(){
 
         if (error) {
             setLoading(false);
-            setResult("Error:", error.message);
+            setResult("There was an error submitting the form.");
             return;
         }
 
@@ -58,7 +58,8 @@ export default function CommissionForm(){
 
     return(
         <div style={{textAlign:"center"}}>
-            <h2 style={{marginBottom:"3rem"}}>Request a Commission</h2>
+            <h2>Request a Commission</h2>
+            <br />
             {loading ?
             <Loading />
             :
@@ -68,9 +69,10 @@ export default function CommissionForm(){
             </div>
             :
             <form onSubmit={submit}>
+                <p style={{fontSize:"1rem", textAlign:"left"}}>Get your own personilzed colored pencil portrait. Fill out this form to receive a quote. Prices will vary based on size and complexity.</p>
                 <div className='form-names'>
                     <span className="form-input">
-                        <label><small>First Name*</small></label>
+                        <label><small>First Name</small></label>
                         <input name="First Name" type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required/>
                     </span>
                     <span className="form-input">
@@ -79,12 +81,12 @@ export default function CommissionForm(){
                     </span>
                 </div>
                 <span className="form-input">
-                    <label><small>Email*</small></label>
+                    <label><small>Email</small></label>
                     <input name="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                 </span>
                 <span className="form-input">
                     <label><small>Reference Photo</small></label>
-                    <input name="Reference Photo" type="file" accept="image/*" onChange={(e) => setPhoto(e.target.files[0])}/>
+                    <input name="Reference Photo" type="file" accept="image/*" onChange={(e) => setPhoto(e.target.files[0])} style={{border:"none"}} />
                     <small style={{width:"50%", fontSize:"10px"}}>Note: this image will be exactly whats drawn, make sure the quality and lighting is good</small>
                 </span>
                 <div className='form-names'>
@@ -99,7 +101,7 @@ export default function CommissionForm(){
                 </div>
                 <span className="form-input">
                     <label><small>Message</small></label>
-                    <textarea name="Message" rows="10" placeholder='Optional' value={message} onChange={(e) => setMessage(e.target.value)}/>
+                    <textarea name="Message" rows="5" placeholder='Optional' value={message} onChange={(e) => setMessage(e.target.value)}/>
                 </span>
                 <br />
                 <button type="submit" className='form-submit'>Submit</button>

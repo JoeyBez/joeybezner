@@ -41,7 +41,8 @@
 .cta{
     padding: 1rem;
     height: 50px;
-    width: 100px;
+    font-size: 1rem;
+    width: fit-content;
     color: white;
     background-color: black;
     border: none;
@@ -51,6 +52,7 @@
 .cta:hover{
     color: black;
     background-color: var(--accent-highlight);
+    scale: 1.05;
 }
 
 @media screen and (min-width: 768px) {
