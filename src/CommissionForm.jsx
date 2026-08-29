@@ -16,8 +16,6 @@ export default function CommissionForm(){
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState(null);
 
-    const [gelatoListing, setGelatoListing] = useState();
-
     const submit = async (e) => {
         e.preventDefault();
         
@@ -60,30 +58,6 @@ export default function CommissionForm(){
 
         addCommission();
     };
-
-    useEffect(() => {
-        // Access the environment variable
-        const apiKey = import.meta.env.VITE_GELATO; // Use process.env.REACT_APP_API_KEY for CRA
-
-        fetch('https://product.gelatoapis.com/v3/products/ea533f7d-2c4e-47f1-9106-2e893ab4a387', {
-        method: 'GET',
-        headers: {
-            // 'Authorization': `Bearer ${apiKey}`,
-            'X-API-KEY': `Bearer ${apiKey}`,
-            'Access-Control-Allow-Origin': '*'
-        }
-        })
-        .then(response => console.log(response))
-        // .then(data => {
-        //     setGelatoListing(data);
-        //     console.log(data);
-        //     // setLoading(false);
-        // })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            // setLoading(false);
-        });
-    }, []);
 
     async function addCommission(){
         const {error} = await supabase
