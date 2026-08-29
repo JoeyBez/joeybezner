@@ -70,15 +70,14 @@ export default function CommissionForm(){
         headers: {
             // 'Authorization': `Bearer ${apiKey}`,
             'X-API-KEY': `Bearer ${apiKey}`,
-            'Content-Type': 'application/json'
         }
         })
-        .then(response => response.json())
-        .then(data => {
-            setGelatoListing(data);
-            console.log(data);
-            // setLoading(false);
-        })
+        .then(response => console.log(response))
+        // .then(data => {
+        //     setGelatoListing(data);
+        //     console.log(data);
+        //     // setLoading(false);
+        // })
         .catch(error => {
             console.error('Error fetching data:', error);
             // setLoading(false);
