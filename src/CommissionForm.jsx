@@ -69,7 +69,7 @@ export default function CommissionForm(){
         method: 'GET',
         headers: {
             // 'Authorization': `Bearer ${apiKey}`,
-            'X-API-KEY': `Bearer ${apiKey}`,
+            'X-API-KEY': `${apiKey}`,
         }
         })
         .then(response => console.log(response))
