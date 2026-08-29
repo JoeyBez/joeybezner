@@ -70,6 +70,7 @@ export default function CommissionForm(){
         headers: {
             // 'Authorization': `Bearer ${apiKey}`,
             'X-API-KEY': `Bearer ${apiKey}`,
+            'Access-Control-Allow-Origin': '*'
         }
         })
         .then(response => console.log(response))
