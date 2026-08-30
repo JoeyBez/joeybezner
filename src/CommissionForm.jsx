@@ -103,7 +103,7 @@ export default function CommissionForm(){
 
     return(
         <div style={{textAlign:"center"}}>
-            {gelatoListing && <GelatoProduct data={gelatoListing.products[0]} product={gelatoListing.products[0].variants[0].productUid} />}
+            {/* {gelatoListing && <GelatoProduct data={gelatoListing.products[0]} product={gelatoListing.products[0].variants[0].productUid} />} */}
             <h2>Request a Commission</h2>
             <br />
             {loading ?

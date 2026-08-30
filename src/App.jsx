@@ -9,7 +9,7 @@ import Home from './Home';
 import CategoryHeader from './CategoryHeader';
 import Videos from './Videos';
 import CommissionForm from './CommissionForm';
-import DevPage from './DevPage';
+import DevPage from './DevTools/DevPage';
 import Login from './DevTools/Login';
 
 function App() {

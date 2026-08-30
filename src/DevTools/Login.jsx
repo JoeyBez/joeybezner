@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
-import DevPage from "../DevPage";
+import DevPage from "./DevPage";
 import Loading from "../Loading";
 import { useSearchParams } from "react-router-dom";
 

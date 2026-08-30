@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { supabase } from "./lib/supabaseClient";
-import Loading from "./Loading";
+import { supabase } from "../lib/supabaseClient";
+import Loading from "../Loading";
 import "./DevPage.css";
 import { IoCheckmark, IoTrashOutline } from "react-icons/io5";
-import Login from "./DevTools/Login";
+import Login from "./Login";
 
 export default function DevPage() {
     const [loading, setLoading] = useState(false);
