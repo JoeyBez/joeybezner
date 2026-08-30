@@ -119,6 +119,7 @@ function App() {
           <small>Contact</small>
           <small style={{display:"flex", gap:"0.3rem"}}><IoMailOutline /> contact@joeybezner.com</small>
           <small style={{display:"flex", gap:"0.3rem"}}><IoCallOutline /> {'+1 (503)-502-3569'}</small>
+          <small style={{textDecoration:"underline"}}><Link to='/login' className="link">Login</Link></small>
         </div>
         <div style={{display:"flex", flexDirection:"column", gap:"0.5rem"}}>
           <small>Socials</small>
