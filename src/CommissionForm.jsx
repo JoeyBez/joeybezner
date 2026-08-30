@@ -3,6 +3,7 @@ import './CommissionForm.css'
 import { supabase } from './lib/supabaseClient';
 import Loading from './Loading';
 import GetPrice from './GetPrice';
+import GelatoProduct from './GelatoProduct';
 
 export default function CommissionForm(){
     const [firstName, setFirstName] = useState("");
@@ -62,26 +63,26 @@ export default function CommissionForm(){
     };
 
     useEffect(() => {
-        // Access the environment variable
-        const apiKey = import.meta.env.VITE_GELATO; // Use process.env.REACT_APP_API_KEY for CRA
+        const getGelatoTemplate = async () => {
+            try {
+                const { data, error } = await supabase.functions.invoke(
+                    "gelato-getTemplate"
+                );
 
-        fetch('https://shipment.gelatoapis.com/v1/shipment-methods', {
-        method: 'GET',
-        headers: {
-            // 'Authorization': `Bearer ${apiKey}`,
-            'X-API-KEY': `${apiKey}`,
-        }
-        })
-        .then(response => console.log(response))
-        // .then(data => {
-        //     setGelatoListing(data);
-        //     console.log(data);
-        //     // setLoading(false);
-        // })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            // setLoading(false);
-        });
+                if (error) {
+                    console.error("Supabase function error:", error);
+                    return;
+                }
+
+                console.log("Gelato template:", data);
+
+                setGelatoListing(data);
+            } catch (error) {
+                console.error("Error fetching Gelato template:", error);
+            }
+        };
+
+        getGelatoTemplate();
     }, []);
 
     async function addCommission(){
@@ -102,6 +103,7 @@ export default function CommissionForm(){
 
     return(
         <div style={{textAlign:"center"}}>
+            {gelatoListing && <GelatoProduct data={gelatoListing.products[0]} product={gelatoListing.products[0].variants[0].productUid} />}
             <h2>Request a Commission</h2>
             <br />
             {loading ?

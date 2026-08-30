@@ -10,6 +10,7 @@ import CategoryHeader from './CategoryHeader';
 import Videos from './Videos';
 import CommissionForm from './CommissionForm';
 import DevPage from './DevPage';
+import Login from './DevTools/Login';
 
 function App() {
   const navigate = useNavigate();
@@ -19,6 +20,15 @@ function App() {
   const [categories, setCategories] = useState([]);
   const [openMenu, setOpenMenu] = useState(false);
 
+  const [session, setSession] = useState();
+
+  useEffect(() => {
+    async function getUser() {
+      const { data: { user } } = await supabase.auth.getUser()
+      setSession(user);
+    }
+    getUser();
+  }, []);
   /** 
    * Gets category enum from supabase as an array
   */
@@ -102,7 +112,7 @@ function App() {
         <Route path='/Videos' element={<Videos />} />
         <Route path='/Shop' element={displayListing ? <DisplayListing id={displayListing} /> : <CommissionForm />} />
 
-        <Route path='/dev' element={<DevPage />} />
+        <Route path='/login' element={<Login session={session}/>} />
       </Routes>
       <footer>
         <div style={{display:"flex", flexDirection:"column", gap:"0.5rem"}}>

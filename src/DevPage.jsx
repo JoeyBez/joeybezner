@@ -4,12 +4,13 @@ import { supabase } from "./lib/supabaseClient";
 import Loading from "./Loading";
 import "./DevPage.css";
 import { IoCheckmark, IoTrashOutline } from "react-icons/io5";
+import Login from "./DevTools/Login";
 
 export default function DevPage() {
     const [loading, setLoading] = useState(false);
     const [commissions, setCommissions] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
-    const password = import.meta.env.VITE_PASSWORD;
+    // const password = import.meta.env.VITE_PASSWORD;
 
     const [reload, setReload] = useState(false);
     const [adding, setAdding] = useState(false);
@@ -26,7 +27,7 @@ export default function DevPage() {
 
     useEffect(() => {
         async function getCommissions() {
-            if (searchParams.get("password") != password) return;
+            // if (searchParams.get("password") != password) return;
 
             setLoading(true);
             const { data, error } = await supabase.from("commissions").select("*").order("date", { ascending: false });
@@ -103,128 +104,124 @@ export default function DevPage() {
 
     return (
         <div>
-            {searchParams.get("password") == password ? (
-                <div>
-                    <h2>Commisions</h2>
-                    <button
-                        onClick={() => {
-                            if (adding) {
-                                addCommission();
-                            }
-                            setAdding(true);
-                        }}
-                    >
-                        {adding ? "Save" : "Add"}
-                    </button>
-                    {loading ? (
-                        <Loading />
-                    ) : (
-                        <div className="table-container">
-                            <table style={{ textAlign: "left" }}>
-                                <thead>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Date</th>
-                                    <th>Price</th>
-                                    <th>Status</th>
-                                </thead>
-                                <tbody>
-                                    {adding && (
-                                        <tr>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    value={newName}
-                                                    onChange={(e) => setNewName(e.target.value)}
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="email"
-                                                    value={newEmail}
-                                                    onChange={(e) => setNewEmail(e.target.value)}
-                                                />
-                                            </td>
-                                            <td>Now</td>
-                                            <td>
-                                                <input
-                                                    type="number"
-                                                    value={newPrice}
-                                                    onChange={(e) => setNewPrice(e.target.value)}
-                                                />
-                                            </td>
-                                            <td>
-                                                <div className={`status Waiting`}>Waiting</div>
-                                            </td>
-                                        </tr>
-                                    )}
-                                    {commissions.map((c) => (
-                                        <tr key={c.id}>
-                                            <td>{c.name}</td>
-                                            <td>{c.email}</td>
-                                            <td>{getDate(c.date)}</td>
-                                            <td>{`$${c.price}`}</td>
-                                            <td>
-                                                <div>
-                                                    <select
-                                                        value={
-                                                            newStatus.id == c.id
-                                                                ? newStatus.status
-                                                                : c.status.toString()
-                                                        }
-                                                        onChange={(e) =>
-                                                            setNewStatus({ id: c.id, status: e.target.value })
-                                                        }
-                                                        className={`status ${c.status.toString().replace(" ", "")}`}
-                                                    >
-                                                        <option value={"Waiting"}>Waiting</option>
-                                                        <option value={"In Progress"}>In Progress</option>
-                                                        <option value={"Done"}>Done</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <IoTrashOutline
-                                                    className="trash"
-                                                    onClick={() => deleteCommission(c.id)}
-                                                />
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                            <br />
-                        </div>
-                    )}
-                    <h3>Earnings</h3>
-                    <table style={{ textAlign: "left", width: "100%" }}>
-                        <thead>
-                            <th>Total</th>
-                            <th>Projected</th>
-                        </thead>
-                        <tr>
-                            <td>
-                                $
-                                {commissions
-                                    .filter((v) => {
-                                        return v.status.toString() == "Done";
-                                    })
-                                    .reduce((accumulator, current) => {
-                                        return accumulator + current.price;
-                                    }, 0)}
-                            </td>
-                            <td>
-                                $
-                                {commissions.reduce((accumulator, current) => {
+            <div>
+                <h2>Commisions</h2>
+                <button
+                    onClick={() => {
+                        if (adding) {
+                            addCommission();
+                        }
+                        setAdding(true);
+                    }}
+                >
+                    {adding ? "Save" : "Add"}
+                </button>
+                {loading ? (
+                    <Loading />
+                ) : (
+                    <div className="table-container">
+                        <table style={{ textAlign: "left" }}>
+                            <thead>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Date</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                            </thead>
+                            <tbody>
+                                {adding && (
+                                    <tr>
+                                        <td>
+                                            <input
+                                                type="text"
+                                                value={newName}
+                                                onChange={(e) => setNewName(e.target.value)}
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
+                                                type="email"
+                                                value={newEmail}
+                                                onChange={(e) => setNewEmail(e.target.value)}
+                                            />
+                                        </td>
+                                        <td>Now</td>
+                                        <td>
+                                            <input
+                                                type="number"
+                                                value={newPrice}
+                                                onChange={(e) => setNewPrice(e.target.value)}
+                                            />
+                                        </td>
+                                        <td>
+                                            <div className={`status Waiting`}>Waiting</div>
+                                        </td>
+                                    </tr>
+                                )}
+                                {commissions.map((c) => (
+                                    <tr key={c.id}>
+                                        <td>{c.name}</td>
+                                        <td>{c.email}</td>
+                                        <td>{getDate(c.date)}</td>
+                                        <td>{`$${c.price}`}</td>
+                                        <td>
+                                            <div>
+                                                <select
+                                                    value={
+                                                        newStatus.id == c.id
+                                                            ? newStatus.status
+                                                            : c.status.toString()
+                                                    }
+                                                    onChange={(e) =>
+                                                        setNewStatus({ id: c.id, status: e.target.value })
+                                                    }
+                                                    className={`status ${c.status.toString().replace(" ", "")}`}
+                                                >
+                                                    <option value={"Waiting"}>Waiting</option>
+                                                    <option value={"In Progress"}>In Progress</option>
+                                                    <option value={"Done"}>Done</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <IoTrashOutline
+                                                className="trash"
+                                                onClick={() => deleteCommission(c.id)}
+                                            />
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                        <br />
+                    </div>
+                )}
+                <h3>Earnings</h3>
+                <table style={{ textAlign: "left", width: "100%" }}>
+                    <thead>
+                        <th>Total</th>
+                        <th>Projected</th>
+                    </thead>
+                    <tr>
+                        <td>
+                            $
+                            {commissions
+                                .filter((v) => {
+                                    return v.status.toString() == "Done";
+                                })
+                                .reduce((accumulator, current) => {
                                     return accumulator + current.price;
                                 }, 0)}
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            ) : (
-                <div>Page not found.</div>
-            )}
+                        </td>
+                        <td>
+                            $
+                            {commissions.reduce((accumulator, current) => {
+                                return accumulator + current.price;
+                            }, 0)}
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     );
 }
